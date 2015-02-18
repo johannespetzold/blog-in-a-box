@@ -11,5 +11,9 @@ ADD https://wordpress.org/latest.tar.gz /
 RUN tar xf latest.tar.gz
 ADD wp-config.php /wordpress/
 
+RUN apt-get install -y wget
+RUN wget https://api.wordpress.org/secret-key/1.1/salt
+RUN ex +'g/put your unique phrase here/d' +r/salt +wq /wordpress/wp-config.php
+
 ADD run.sh /
 CMD /run.sh; bash
