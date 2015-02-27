@@ -11,6 +11,7 @@ RUN a2enmod ssl
 ADD https://wordpress.org/latest.tar.gz /
 RUN tar xf latest.tar.gz
 ADD wp-config.php /wordpress/
+RUN chown -R www-data wordpress
 
 RUN apt-get install -y wget
 RUN wget https://api.wordpress.org/secret-key/1.1/salt
